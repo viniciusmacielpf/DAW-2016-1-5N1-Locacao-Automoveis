@@ -3,6 +3,8 @@
 package br.edu.ifsul.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -28,26 +32,27 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "telefone")
+@Table(name = "opcionais")
 
-public class Telefone implements Serializable {
+public class Opcionais implements Serializable {
     @Id
-    @SequenceGenerator(name = "seq_telefone", sequenceName = "seq_telefone_id", allocationSize = 1)
-    @GeneratedValue(generator = "seq_telefone", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "seq_opcionais", sequenceName = "seq_opcionais_id", allocationSize = 1)
+    @GeneratedValue(generator = "seq_opcionais", strategy = GenerationType.SEQUENCE)
     private Integer id;
+        
+    @Column(name = "descricao",nullable = true,length = 50)
+    private String descricao;
     
-    @Column(name = "numero",nullable = false,length = 20)
-    @NotBlank(message = "Informe um numero!")
-    @Length(max=20, message = "o numero não deve ultrapassar {max} caracteres")
-    private String numero;
+//    @ManyToOne
+//    @NotNull(message = "Informe o automovel")
+//    @JoinColumn(name="pessoa_id" ,referencedColumnName = "id", nullable = false)
+//   
     
-    @Column(name = "operadora",nullable = true,length = 50)
-    private String operadora;
-    
-    @ManyToOne
-    @NotNull(message = "Informe a pessoa")
-    @JoinColumn(name="pessoa_id" ,referencedColumnName = "id", nullable = false)
-    private Pessoa pessoa;
+     @ManyToMany
+    @JoinTable(name = "auto_opcionais",
+            joinColumns = @JoinColumn(name = "opcionais", referencedColumnName = "id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "automoveis", referencedColumnName = "id", nullable = false))
+    private List<Automovel> automovel = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -57,28 +62,20 @@ public class Telefone implements Serializable {
         this.id = id;
     }
 
-    public String getNumero() {
-        return numero;
+   
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
    
-
-    public Pessoa getPessoa() {
-        return pessoa;
+    public Opcionais() {
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
-
-    public Telefone() {
-    }
-
-    
+   
     @Override
     public int hashCode() {
         int hash = 7;
@@ -94,19 +91,19 @@ public class Telefone implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Telefone other = (Telefone) obj;
+        final Opcionais other = (Opcionais) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
     }
 
-    public String getOperadora() {
-        return operadora;
+    public List<Automovel> getAutomovel() {
+        return automovel;
     }
 
-    public void setOperadora(String operadora) {
-        this.operadora = operadora;
+    public void setAutomovel(List<Automovel> automovel) {
+        this.automovel = automovel;
     }
     
     

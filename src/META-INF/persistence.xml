@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-    <persistence-unit name="DAW-2016-1-5N1-ModelPU" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="DAW-2016-1-5N1-Locacao-AutomoveisPU" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/daw-2016-1-5n1"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/daw-2016-1-5n1-automoveis"/>
             <property name="javax.persistence.jdbc.password" value="vini210242"/>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.user" value="postgres"/>
@@ -14,5 +14,5 @@
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
         </properties>
-    </persistence-unit>
+    </persistence-unit> 
 </persistence> 

@@ -28,10 +28,17 @@ import org.hibernate.validator.constraints.NotBlank;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "pessoa_fisica")
 public class PessoaFisica  extends Pessoa implements Serializable {
+    
+    
     @NotBlank(message = "Rg deve ser informado")
     @Length(max = 11, message = "Rg invalido, ultrapassou {max} caracteres")
     @Column(name = "rg" ,nullable = false, length=11 )
     private String rg;
+    
+    @NotBlank(message = "Sexo deve ser informado")
+    @Length(max = 14, message = "Sexo invalido, ultrapassou {max} caracteres")
+    @Column(name = "sexo" ,nullable = false, length=11 )
+    private String sexo;
     
     @NotBlank(message = "CPF deve ser informado")
     @Length(max = 14, message = "CPF invalido, ultrapassou {max} caracteres")
@@ -43,12 +50,7 @@ public class PessoaFisica  extends Pessoa implements Serializable {
     @Temporal(TemporalType.DATE)
     private Calendar nascimento;
     
-    @ManyToMany
-    @JoinTable(name = "desejos", 
-            joinColumns = @JoinColumn(name = "pessoa_fisica", referencedColumnName = "id", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "produto",referencedColumnName = "id", nullable = false)) 
-    private List<Automovel> desejos = new ArrayList();
-    
+   
 
     public PessoaFisica() {
     }
@@ -77,12 +79,6 @@ public class PessoaFisica  extends Pessoa implements Serializable {
         this.nascimento = nascimento;
     }
 
-    public List<Automovel> getDesejos() {
-        return desejos;
-    }
-
-    public void setDesejos(List<Automovel> desejos) {
-        this.desejos = desejos;
-    }
+    
     
 }

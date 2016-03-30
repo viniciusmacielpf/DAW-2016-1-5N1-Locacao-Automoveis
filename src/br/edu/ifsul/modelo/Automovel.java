@@ -9,8 +9,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +20,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
@@ -62,12 +65,17 @@ public class Automovel implements Serializable {
     @JoinColumn(name = "marca", referencedColumnName = "id", nullable = false)
     @NotNull(message = "Informe a marca")
     private Marca marca;
+    
 
-//    @ManyToMany
-//    @JoinTable(name = "desejos",
-//            joinColumns = @JoinColumn(name = "produto", referencedColumnName = "id", nullable = false),
-//            inverseJoinColumns = @JoinColumn(name = "pessoa_fisica", referencedColumnName = "id", nullable = false))
-//    private List<PessoaFisica> desejam = new ArrayList<>();
+    @OneToMany(mappedBy = "automovel", cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Reparos> reparos = new ArrayList<>();
+  
+     
+    @ManyToMany
+    @JoinTable(name = "auto_opcionais",
+            joinColumns = @JoinColumn(name = "automovel", referencedColumnName = "id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "opcionais", referencedColumnName = "id", nullable = false))
+    private List<Opcionais> opcionais = new ArrayList<>();
 
     public Automovel() {
     }
@@ -81,7 +89,16 @@ public class Automovel implements Serializable {
     }
 
     
-
+    public void addReparos(Reparos obj){
+        obj.setAutomovel(this);
+        this.reparos.add(obj);
+    }
+    
+    public void removeReparos(int index){
+        this.reparos.remove(index);
+    } 
+    
+    
     @Override
     public int hashCode() {
         int hash = 3;
@@ -108,6 +125,14 @@ public class Automovel implements Serializable {
     }
 
     
+    public List<Opcionais> getDesejam() {
+        return opcionais;
+    }
+
+    public void setDesejam(List<Opcionais> opcionais) {
+        this.opcionais = opcionais;
+    }
+
     public Marca getMarca() {
         return marca;
     }
@@ -146,6 +171,22 @@ public class Automovel implements Serializable {
 
     public void setEstoque(Double estoque) {
         this.estoque = estoque;
+    }
+
+    public List<Reparos> getReparos() {
+        return reparos;
+    }
+
+    public void setReparos(List<Reparos> reparos) {
+        this.reparos = reparos;
+    }
+
+    public List<Opcionais> getOpcionais() {
+        return opcionais;
+    }
+
+    public void setOpcionais(List<Opcionais> opcionais) {
+        this.opcionais = opcionais;
     }
 
 

@@ -33,6 +33,15 @@ public class PessoaJuridica  extends Pessoa implements Serializable {
     @Column(name = "cnpj" ,nullable = false, length=14,unique = true)
     private String cnpj;
     
+     @NotBlank(message = "Razao social deve ser informado")
+    @Length(max = 70, message = "razao Social invalido, ultrapassou {max} caracteres")
+    @Column(name = "razaosocial" ,nullable = false, length=70,unique = true)
+    private String razaosocial;
+    
+      @Column(name = "fundacao", nullable = false)
+    @NotNull(message = "fundacao deve ser informado!")
+    @Temporal(TemporalType.DATE)
+    private Calendar fundacao;
 
     public PessoaJuridica() {
     }

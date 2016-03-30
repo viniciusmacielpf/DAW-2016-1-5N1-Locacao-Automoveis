@@ -39,56 +39,48 @@ public abstract class Pessoa implements Serializable {
     @SequenceGenerator(name = "seq_pessoa", sequenceName = "seq_pessoa_id", allocationSize = 1)
     @GeneratedValue(generator = "seq_pessoa", strategy = GenerationType.SEQUENCE)
     private Integer id;
-    
-    @Column(name = "nome",nullable = false,length = 50)
+
+    @Column(name = "nome", nullable = false, length = 50)
     @NotBlank(message = "Informe um nome valido!")
-    @Length(max=50, message = "o nome não deve ultrapassar {max} caracteres")
+    @Length(max = 50, message = "o nome não deve ultrapassar {max} caracteres")
     private String nome;
-    
-    @Column(name = "endereco",nullable = true,length = 100)
-    @NotBlank(message = "Informe um endereco valido!")
-    @Length(max=50, message = "o endereço não deve ultrapassar {max} caracteres")
-    private String endereco;
-    
-    @Column(name = "email",nullable = false,length = 50)
+
+    @Column(name = "sobrenome", nullable = false, length = 50)
+    @NotBlank(message = "Informe um sobrenome!")
+    @Length(max = 50, message = "o sobrenome não deve ultrapassar {max} caracteres")
+    private String sobrenome;
+
+    @Column(name = "email", nullable = false, length = 50)
     @Email(message = "Informe um email valido!")
     @NotBlank(message = "Informe um email!")
-    @Length(max=50, message = "o nome não deve ultrapassar {max} caracteres")
+    @Length(max = 50, message = "o nome não deve ultrapassar {max} caracteres")
     private String email;
-    
-    @Column(name = "bairro",nullable = false,length = 50)
-    @NotBlank(message = "Informe um bairro00ooo!")
-    @Length(max=50, message = "o bairro não deve ultrapassar {max} caracteres")
-    private String bairro;
-   
-    @Column(name = "cep",nullable = false,length = 8)
-    @NotBlank(message = "Informe um cep valido!")
-    @Length(max=9, message = "o cep não deve ultrapassar {max} caracteres")
-    
-    private String cep;
-    
-    @Column(name = "complemento",nullable = false,length = 8)
-    private String complemento;
-    
+
+    @Column(name = "endereco", nullable = true, length = 100)
+    @NotBlank(message = "Informe um endereco valido!")
+    @Length(max = 50, message = "o endereço não deve ultrapassar {max} caracteres")
+    private String endereco;
+
     @ManyToOne
-    @JoinColumn(name="cidade" ,referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "cidade", referencedColumnName = "id", nullable = false)
     @NotNull(message = "Informe a cidade")
     private Cidade cidade;
-    
-    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.LAZY)
+
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Telefone> telefones = new ArrayList<>();
-    
+
     public Pessoa() {
     }
-    
-    public void addTelefone(Telefone obj){
+
+    public void addTelefone(Telefone obj) {
         obj.setPessoa(this);
         this.telefones.add(obj);
     }
-    
-    public void removeTelefone(int index){
+
+    public void removeTelefone(int index) {
         this.telefones.remove(index);
     }
+
     @Override
     public int hashCode() {
         int hash = 5;
@@ -111,10 +103,8 @@ public abstract class Pessoa implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", email=" + email + ", bairo=" + bairro + ", cep=" + cep + ", complemento=" + complemento + '}';
-    }
+    
+    
 
     public Integer getId() {
         return id;
@@ -148,30 +138,7 @@ public abstract class Pessoa implements Serializable {
         this.email = email;
     }
 
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
-    }
-
+   
     public Cidade getCidade() {
         return cidade;
     }
@@ -179,7 +146,7 @@ public abstract class Pessoa implements Serializable {
     public void setCidade(Cidade cidade) {
         this.cidade = cidade;
     }
-
+ 
     public List<Telefone> getTelefones() {
         return telefones;
     }
