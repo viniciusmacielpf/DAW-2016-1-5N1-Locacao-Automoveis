@@ -47,7 +47,7 @@ public class VendaItens implements Serializable {
     @NotNull(message = "Produto deve ser infomrado!")
     @ManyToOne
     @JoinColumn(name="produto", referencedColumnName = "id", nullable = false)
-    private Produto produto;
+    private Automovel produto;
     
     @NotNull(message = "A venda deve ser infomrado!")
     @ManyToOne
@@ -111,11 +111,11 @@ public class VendaItens implements Serializable {
         this.valorTotal = valorTotal;
     }
 
-    public Produto getProduto() {
+    public Automovel getProduto() {
         return produto;
     }
 
-    public void setProduto(Produto produto) {
+    public void setProduto(Automovel produto) {
         this.produto = produto;
     }
 

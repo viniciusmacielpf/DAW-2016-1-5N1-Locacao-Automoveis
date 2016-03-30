@@ -4,7 +4,7 @@ package br.edu.ifsul.testes;
 import br.edu.ifsul.jpa.EntityManagerUtil;
 import br.edu.ifsul.modelo.Cidade;
 import br.edu.ifsul.modelo.PessoaFisica;
-import br.edu.ifsul.modelo.Produto;
+import br.edu.ifsul.modelo.Automovel;
 import br.edu.ifsul.modelo.Usuario;
 import java.util.Calendar;
 import javax.persistence.EntityManager; 
@@ -43,7 +43,7 @@ public class TestePersistirDesejo {
         boolean exception = false;
         try {
             PessoaFisica obj = em.find(PessoaFisica.class, 7);
-            Produto p = em.find(Produto.class, 2);
+            Automovel p = em.find(Automovel.class, 2);
             obj.getDesejos().add(p);
             em.getTransaction().begin();
             em.persist(obj);

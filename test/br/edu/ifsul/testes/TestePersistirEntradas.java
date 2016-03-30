@@ -8,7 +8,7 @@ import br.edu.ifsul.modelo.EntradaItem;
 import br.edu.ifsul.modelo.Estado;
 import br.edu.ifsul.modelo.PessoaFisica;
 import br.edu.ifsul.modelo.PessoaJuridica;
-import br.edu.ifsul.modelo.Produto;
+import br.edu.ifsul.modelo.Automovel;
 import br.edu.ifsul.modelo.Telefone;
 import br.edu.ifsul.jpa.EntityManagerUtil;
 import java.util.ArrayList;
@@ -54,7 +54,7 @@ public class TestePersistirEntradas {
             ei.setQuantidade(3.0);
             ei.setValorUnitario(3.0);
             ei.setValorTotal(ei.getQuantidade() * ei.getValorUnitario());
-            ei.setProduto(em.find(Produto.class, 2)); 
+            ei.setProduto(em.find(Automovel.class, 2)); 
             e.addItem(ei);
    
             em.getTransaction().begin();

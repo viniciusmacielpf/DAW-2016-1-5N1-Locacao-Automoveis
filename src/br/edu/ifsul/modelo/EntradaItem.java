@@ -58,7 +58,7 @@ public class EntradaItem implements Serializable{
     @ManyToOne
     @NotNull(message = "Informe o produto")
     @JoinColumn(name="produto" ,referencedColumnName = "id", nullable = false)
-    private Produto produto;
+    private Automovel produto;
 
     
     @Override
@@ -129,11 +129,11 @@ public class EntradaItem implements Serializable{
         this.entrada = entrada;
     }
 
-    public Produto getProduto() {
+    public Automovel getProduto() {
         return produto;
     }
 
-    public void setProduto(Produto produto) {
+    public void setProduto(Automovel produto) {
         this.produto = produto;
     }
     

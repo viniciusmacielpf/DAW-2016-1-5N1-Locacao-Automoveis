@@ -4,7 +4,7 @@ package br.edu.ifsul.testes;
 
 import br.edu.ifsul.modelo.PessoaFisica;
 import br.edu.ifsul.jpa.EntityManagerUtil;
-import br.edu.ifsul.modelo.Produto;
+import br.edu.ifsul.modelo.Automovel;
 import br.edu.ifsul.modelo.Usuario;
 import br.edu.ifsul.modelo.Venda;
 import br.edu.ifsul.modelo.VendaItens;

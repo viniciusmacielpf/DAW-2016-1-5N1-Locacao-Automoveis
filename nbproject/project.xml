@@ -3,7 +3,7 @@
     <type>org.netbeans.modules.java.j2seproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
-            <name>DAW-2016-1-5N1-Model</name>
+            <name>DAW-2016-1-5N1-Locacao-Automoveis</name>
             <source-roots>
                 <root id="src.dir"/>
             </source-roots>

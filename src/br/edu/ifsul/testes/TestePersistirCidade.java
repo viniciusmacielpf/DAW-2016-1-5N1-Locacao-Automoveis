@@ -8,7 +8,7 @@ package br.edu.ifsul.testes;
 
 import br.edu.ifsul.modelo.Cidade;
 import br.edu.ifsul.modelo.Estado;
-import br.edu.ifsul.modelo.Produto;
+import br.edu.ifsul.modelo.Automovel;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

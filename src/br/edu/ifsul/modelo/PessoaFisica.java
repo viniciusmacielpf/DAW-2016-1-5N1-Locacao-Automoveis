@@ -47,7 +47,7 @@ public class PessoaFisica  extends Pessoa implements Serializable {
     @JoinTable(name = "desejos", 
             joinColumns = @JoinColumn(name = "pessoa_fisica", referencedColumnName = "id", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "produto",referencedColumnName = "id", nullable = false)) 
-    private List<Produto> desejos = new ArrayList();
+    private List<Automovel> desejos = new ArrayList();
     
 
     public PessoaFisica() {
@@ -77,11 +77,11 @@ public class PessoaFisica  extends Pessoa implements Serializable {
         this.nascimento = nascimento;
     }
 
-    public List<Produto> getDesejos() {
+    public List<Automovel> getDesejos() {
         return desejos;
     }
 
-    public void setDesejos(List<Produto> desejos) {
+    public void setDesejos(List<Automovel> desejos) {
         this.desejos = desejos;
     }
     

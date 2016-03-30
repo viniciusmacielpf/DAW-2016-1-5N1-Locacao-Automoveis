@@ -7,7 +7,7 @@ package br.edu.ifsul.testes;
 
 import br.edu.ifsul.modelo.Grupo;
 import br.edu.ifsul.modelo.Marca;
-import br.edu.ifsul.modelo.Produto;
+import br.edu.ifsul.modelo.Automovel;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -29,13 +29,13 @@ public class TestePersistirProduto {
         Grupo g = em.find(Grupo.class, 1);
         
         
-        Produto p = new Produto();
-        
-        p.setNome("Notebook");
-        p.setDescricao("Core i5, 4gb ram, 1tb HD");
-        p.setEstoque(10.0);
-        p.setPreco(1800.00);
-        p.setGrupo(g);
+        Automovel p = new Automovel();
+//        
+//        p.setNome("Notebook");
+//        p.setDescricao("Core i5, 4gb ram, 1tb HD");
+//        p.setEstoque(10.0);
+//        p.setPreco(1800.00);
+//        p.setGrupo(g);
         p.setMarca(m);
         em.getTransaction().begin();
         em.persist(p);

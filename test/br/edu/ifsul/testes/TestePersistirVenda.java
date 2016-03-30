@@ -4,7 +4,7 @@ package br.edu.ifsul.testes;
 
 import br.edu.ifsul.modelo.PessoaFisica;
 import br.edu.ifsul.jpa.EntityManagerUtil;
-import br.edu.ifsul.modelo.Produto;
+import br.edu.ifsul.modelo.Automovel;
 import br.edu.ifsul.modelo.Usuario;
 import br.edu.ifsul.modelo.Venda;
 import br.edu.ifsul.modelo.VendaItens;
@@ -45,8 +45,9 @@ public class TestePersistirVenda {
             v.setQtdParcelas(3);
 //            v.setValorTotal(5000.00);
             VendaItens vi = new VendaItens();
-            vi.setProduto(em.find(Produto.class,1));
-            vi.setValorUnitario(vi.getProduto().getPreco());
+            vi.setProduto(em.find(Automovel.class,1));
+           
+           //vi.setValorUnitario(vi.getProduto().getPreco());
             vi.setQuantidade(2.0);
             vi.setValorTotal(vi.getQuantidade() * vi.getValorUnitario());
             vi.setVenda(v);

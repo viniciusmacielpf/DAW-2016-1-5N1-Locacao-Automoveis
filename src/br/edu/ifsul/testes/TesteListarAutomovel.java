@@ -6,7 +6,7 @@
 package br.edu.ifsul.testes;
 
 import br.edu.ifsul.modelo.Marca;
-import br.edu.ifsul.modelo.Produto;
+import br.edu.ifsul.modelo.Automovel;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -16,7 +16,7 @@ import javax.persistence.Persistence;
  *
  * @author Vini
  */
-public class TesteListarProduto {
+public class TesteListarAutomovel {
 
     /**
      * @param args the command line arguments
@@ -25,9 +25,9 @@ public class TesteListarProduto {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("DAW-2016-1-5N1-ModelPU");
         EntityManager em = emf.createEntityManager();
         
-        List<Produto> lista = em.createQuery("from Produto order by nome").getResultList();
-        for(Produto p: lista){
-            System.out.println("\n Produto - "+p.getId()+":"+ p.getNome()+"\n Descritao:"+ p.getDescricao()+"\n Marca:"+p.getMarca().getNome()+"\n Grupo:"+p.getGrupo().getNome());
+        List<Automovel> lista = em.createQuery("from Produto order by nome").getResultList();
+        for(Automovel p: lista){
+          //  System.out.println("\n Produto - "+p.getId()+":"+ p.getNome()+"\n Descritao:"+ p.getDescricao()+"\n Marca:"+p.getMarca().getNome()+"\n Grupo:"+p.getGrupo().getNome());
         }
     }
     

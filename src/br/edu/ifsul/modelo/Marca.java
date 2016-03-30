@@ -39,6 +39,11 @@ public class Marca implements Serializable{
     @Length(max=50, message = "o nome não deve ultrapassar {max} caracteres")
     private String nome;
 
+    @Column(name="nacionalidade", length = 100, nullable = false)
+    @NotBlank(message = "Informe um nome valido!")
+    @Length(max=100, message = "o nacionalidade não deve ultrapassar {max} caracteres")
+    private String nacionalidade;
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -88,6 +93,14 @@ public class Marca implements Serializable{
     @Override
     public String toString() {
         return "Macra{" + "nome=" + nome + '}';
+    }
+
+    public String getNacionalidade() {
+        return nacionalidade;
+    }
+
+    public void setNacionalidade(String nacionalidade) {
+        this.nacionalidade = nacionalidade;
     }
 
     

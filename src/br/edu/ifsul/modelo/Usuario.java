@@ -15,7 +15,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 /**
  *
- * @author Jorge Luis Boeira Bavaresco
+ * @author Jorge Luis Boeira Bavaresco 
  * @email jorge.bavaresco@passofundo.ifsul.edu.br
  */
 @Entity
