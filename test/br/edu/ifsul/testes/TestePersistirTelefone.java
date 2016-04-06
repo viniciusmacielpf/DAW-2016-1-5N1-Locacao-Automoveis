@@ -33,10 +33,10 @@ public class TestePersistirTelefone {
     public void teste(){
         Boolean exeption = false;
         try {
-            PessoaFisica pf = em.find(PessoaFisica.class, 7);
+            PessoaFisica pf = em.find(PessoaFisica.class, 5);
             Telefone t = new Telefone();
             t.setNumero("5491141641");
-            t.setDescricao("Celular");
+            t.setOperadora("Tim");
             pf.addTelefone(t);
         
             em.getTransaction().begin();

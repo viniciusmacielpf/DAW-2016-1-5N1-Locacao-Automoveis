@@ -39,6 +39,11 @@ public class PessoaFisica  extends Pessoa implements Serializable {
     @Length(max = 14, message = "Sexo invalido, ultrapassou {max} caracteres")
     @Column(name = "sexo" ,nullable = false, length=11 )
     private String sexo;
+       
+    @Column(name = "sobrenome", nullable = true, length = 50)
+    @NotBlank(message = "Informe um sobrenome!")
+    @Length(max = 50, message = "o sobrenome não deve ultrapassar {max} caracteres")
+    private String sobrenome;
     
     @NotBlank(message = "CPF deve ser informado")
     @Length(max = 14, message = "CPF invalido, ultrapassou {max} caracteres")
@@ -77,6 +82,22 @@ public class PessoaFisica  extends Pessoa implements Serializable {
 
     public void setNascimento(Calendar nascimento) {
         this.nascimento = nascimento;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
     }
 
     

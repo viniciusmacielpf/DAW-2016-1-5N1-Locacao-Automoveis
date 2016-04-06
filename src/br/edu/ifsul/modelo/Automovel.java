@@ -52,14 +52,16 @@ public class Automovel implements Serializable {
     @Length(max = 50, message = "o estado não deve ultrapassar {max} caracteres")
     private String estadoAtual;
     
-    @Column(name = "quilometragem", columnDefinition = "text")
-    private String quilometragem;
+     @Column(name = "quilometragem", columnDefinition = "integer", nullable = false)
+    @NotNull(message = "Informe a quilometragem")
+    @Min(value = 0, message = "KM não pode ser menor que {max}")
+    private Integer quilometragem;
 
 
     @Column(name = "ano", columnDefinition = "integer", nullable = false)
     @NotNull(message = "Informe o ano")
     @Min(value = 0, message = "Ano não pode ser menor que 0")
-    private Double estoque;
+    private Integer ano;
 
     @ManyToOne
     @JoinColumn(name = "marca", referencedColumnName = "id", nullable = false)
@@ -125,11 +127,11 @@ public class Automovel implements Serializable {
     }
 
     
-    public List<Opcionais> getDesejam() {
+    public List<Opcionais> getOpcionais() {
         return opcionais;
     }
 
-    public void setDesejam(List<Opcionais> opcionais) {
+    public void setOpcionais(List<Opcionais> opcionais) {
         this.opcionais = opcionais;
     }
 
@@ -154,24 +156,17 @@ public class Automovel implements Serializable {
     }
 
     public void setEstadoAtual(String estadoAtual) {
-        this.estadoAtual = estadoAtual;
+        this.estadoAtual = estadoAtual; 
     }
 
-    public String getQuilometragem() {
+    public Integer getQuilometragem() {
         return quilometragem;
     }
 
-    public void setQuilometragem(String quilometragem) {
+    public void setQuilometragem(Integer quilometragem) {
         this.quilometragem = quilometragem;
     }
 
-    public Double getEstoque() {
-        return estoque;
-    }
-
-    public void setEstoque(Double estoque) {
-        this.estoque = estoque;
-    }
 
     public List<Reparos> getReparos() {
         return reparos;
@@ -181,13 +176,15 @@ public class Automovel implements Serializable {
         this.reparos = reparos;
     }
 
-    public List<Opcionais> getOpcionais() {
-        return opcionais;
+    public Integer getAno() {
+        return ano;
     }
 
-    public void setOpcionais(List<Opcionais> opcionais) {
-        this.opcionais = opcionais;
+    public void setAno(Integer ano) {
+        this.ano = ano;
     }
+
+   
 
 
 }

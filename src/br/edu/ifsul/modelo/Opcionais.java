@@ -48,11 +48,7 @@ public class Opcionais implements Serializable {
 //    @JoinColumn(name="pessoa_id" ,referencedColumnName = "id", nullable = false)
 //   
     
-     @ManyToMany
-    @JoinTable(name = "auto_opcionais",
-            joinColumns = @JoinColumn(name = "opcionais", referencedColumnName = "id", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "automoveis", referencedColumnName = "id", nullable = false))
-    private List<Automovel> automovel = new ArrayList<>();
+    
 
     public Integer getId() {
         return id;
@@ -98,13 +94,7 @@ public class Opcionais implements Serializable {
         return true;
     }
 
-    public List<Automovel> getAutomovel() {
-        return automovel;
-    }
-
-    public void setAutomovel(List<Automovel> automovel) {
-        this.automovel = automovel;
-    }
+    
     
     
     

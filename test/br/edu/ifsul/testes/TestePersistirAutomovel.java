@@ -6,7 +6,8 @@ import br.edu.ifsul.modelo.Cidade;
 import br.edu.ifsul.modelo.Estado;
 import br.edu.ifsul.modelo.PessoaFisica;
 import br.edu.ifsul.jpa.EntityManagerUtil;
-import br.edu.ifsul.modelo.Telefone;
+import br.edu.ifsul.modelo.Automovel;
+import br.edu.ifsul.modelo.Marca;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.persistence.EntityManager;
@@ -20,50 +21,53 @@ import static org.junit.Assert.*;
  *
  * @author Vini
  */
-public class TestePersistirPessoaFisica {
+public class TestePersistirAutomovel {
+
     EntityManager em;
-    public TestePersistirPessoaFisica() {
+
+    public TestePersistirAutomovel() {
     }
-    
+
     @Before
     public void setUp() {
         em = EntityManagerUtil.getEntityManager();
     }
+
     @Test
-    public void teste(){
+    public void teste() {
         Boolean exeption = false;
         try {
             PessoaFisica pf = new PessoaFisica();
-            
+
+            Marca m = new Marca();
+            m.setNacionalidade("Brasileira");
+            m.setNome("Chevrolet");
+
+            Automovel a = new Automovel();
+
+            a.setEstadoAtual("Otimo");
+            a.setMarca(m);
+            a.setModelo("Celta");
+            a.setAno(2003);
+            a.setQuilometragem(50000);
+
             em.getTransaction().begin();
-            pf.setCidade(em.find(Cidade.class, 1));
-            pf.setCpf("02513464044");
-            pf.setEmail("vinicius@metasig.com.br");
-            pf.setEndereco("Bento Gonçalves");
-            pf.setRg("231124124");
-            
-            pf.setNascimento(new GregorianCalendar(1990, Calendar.JANUARY, 23));
-            pf.setNome("VInicius");
-            pf.setSobrenome("Maciel"); 
-            pf.setSexo("M");
-            
-            
-            em.persist(pf);
+            em.persist(m);
+            em.persist(a);
             em.getTransaction().commit();
             
-            
+
         } catch (Exception e) {
-             exeption = true;
+            exeption = true;
             e.printStackTrace();
         }
-        
-        
+
         Assert.assertEquals(false, exeption);
     }
-    
+
     @After
     public void tearDown() {
         em.close();
     }
-    
+
 }

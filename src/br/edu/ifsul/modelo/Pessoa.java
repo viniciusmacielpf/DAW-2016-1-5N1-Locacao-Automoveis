@@ -45,10 +45,6 @@ public abstract class Pessoa implements Serializable {
     @Length(max = 50, message = "o nome não deve ultrapassar {max} caracteres")
     private String nome;
 
-    @Column(name = "sobrenome", nullable = false, length = 50)
-    @NotBlank(message = "Informe um sobrenome!")
-    @Length(max = 50, message = "o sobrenome não deve ultrapassar {max} caracteres")
-    private String sobrenome;
 
     @Column(name = "email", nullable = false, length = 50)
     @Email(message = "Informe um email valido!")
