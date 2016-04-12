@@ -4,7 +4,7 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/daw-2016-1-5n1-automoveis"/>
-            <property name="javax.persistence.jdbc.password" value="vini210242"/>
+            <property name="javax.persistence.jdbc.password" value="senha"/>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.user" value="postgres"/>
             <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
