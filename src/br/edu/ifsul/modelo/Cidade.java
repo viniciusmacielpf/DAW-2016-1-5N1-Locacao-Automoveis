@@ -38,6 +38,7 @@ public class Cidade implements Serializable {
 
     @Column(name = "nome", nullable = false, length = 50)
     @NotBlank(message = "O nome deve ser informado")
+    @NotNull(message = "O nome deve ser Informado")
     @Length(max = 50, message = "O nome não deve ter mais que {max} caracteres")
     private String nome;
 

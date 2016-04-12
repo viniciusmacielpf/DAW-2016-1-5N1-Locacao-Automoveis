@@ -7,6 +7,7 @@ import br.edu.ifsul.modelo.Estado;
 import br.edu.ifsul.modelo.PessoaFisica;
 import br.edu.ifsul.jpa.EntityManagerUtil;
 import br.edu.ifsul.modelo.Automovel;
+import br.edu.ifsul.modelo.Locacao;
 import br.edu.ifsul.modelo.Marca;
 import br.edu.ifsul.modelo.Opcionais;
 import java.util.Calendar;
@@ -22,11 +23,11 @@ import static org.junit.Assert.*;
  *
  * @author Vini
  */
-public class TestePersistirOpcionais {
+public class TestePersistirLocacao {
 
     EntityManager em;
 
-    public TestePersistirOpcionais() {
+    public TestePersistirLocacao() {
     }
 
     @Before
@@ -38,21 +39,22 @@ public class TestePersistirOpcionais {
     public void teste() {
         Boolean exeption = false;
         try {
-            
-            
-            Automovel a = em.find(Automovel.class, 9);
-            Opcionais op =em.find(Opcionais.class, 1);
-            
-            a.getOpcionais().add(op);
 
-            
-            
+            Locacao lo = new Locacao();
+            lo.setAutomovel(em.find(Automovel.class, 8));
+            lo.setPessoa(em.find(PessoaFisica.class, 5));
+            lo.setRetirada(new GregorianCalendar(2015, Calendar.APRIL, 10));
+            lo.setValorDiaria(55.60);
+
+            lo.atualizaLocacao(new GregorianCalendar(2015, Calendar.APRIL, 14));
 
             em.getTransaction().begin();
-//            em.persist(m);;
-            em.persist(a);
+            em.persist(lo);
+
+            Automovel au = em.find(Automovel.class, 8);
+            au.setQuilometragem(au.getQuilometragem() + 759);
+            em.merge(au);
             em.getTransaction().commit();
-            
 
         } catch (Exception e) {
             exeption = true;

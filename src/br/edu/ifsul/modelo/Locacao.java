@@ -53,6 +53,26 @@ public class Locacao implements Serializable {
      @Column(name = "valor_diaria", columnDefinition = "decimal(12,2)", nullable = false)
     @NotNull(message = "valor diario não informado")
     private Double valorDiaria;
+     
+     
+    @Column(name = "data_retirada", nullable = false)
+    @NotNull(message = "retirada deve ser informado!")
+    @Temporal(TemporalType.DATE)
+    private Calendar retirada;
+
+    @Column(name = "data_devolucao")
+    @Temporal(TemporalType.DATE)
+    private Calendar devolucao;
+
+    @ManyToOne
+    @JoinColumn(name = "automovel", referencedColumnName = "id", nullable = false)
+    @NotNull(message = "Informe o automovel")
+    private Automovel automovel;
+
+    @ManyToOne
+    @JoinColumn(name = "pessoa", referencedColumnName = "id", nullable = false)
+    @NotNull(message = "Informe a pessoa")
+    private Pessoa pessoa;
 
     @Override
     public int hashCode() {
@@ -76,25 +96,6 @@ public class Locacao implements Serializable {
         return true;
     }
 
-    @Column(name = "data_retirada", nullable = false)
-    @NotNull(message = "retirada deve ser informado!")
-    @Temporal(TemporalType.DATE)
-    private Calendar retirada;
-
-    @Column(name = "data_devolucao", nullable = true)
-    @NotNull(message = "retirada deve ser informado!")
-    @Temporal(TemporalType.DATE)
-    private Calendar devolucao;
-
-    @ManyToOne
-    @JoinColumn(name = "automovel", referencedColumnName = "id", nullable = false)
-    @NotNull(message = "Informe o automovel")
-    private Automovel automovel;
-
-    @ManyToOne
-    @JoinColumn(name = "pessoa", referencedColumnName = "id", nullable = false)
-    @NotNull(message = "Informe a pessoa")
-    private Pessoa pessoa;
 
     public Locacao() {
     }
@@ -125,6 +126,15 @@ public class Locacao implements Serializable {
 
     public Calendar getRetirada() {
         return retirada;
+    }
+    
+    public void atualizaLocacao(Calendar devolucao){
+        int dif = (int) ( devolucao.getTimeInMillis() - this.retirada.getTimeInMillis());
+        int tes = (int) (24 * 60 * 60 * 1000);
+        dif = dif/tes;
+        this.valorTotal = this.valorDiaria * dif;     
+        
+    
     }
 
     public void setRetirada(Calendar retirada) {

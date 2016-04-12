@@ -40,7 +40,7 @@ public class Marca implements Serializable{
     private String nome;
 
     @Column(name="nacionalidade", length = 100, nullable = false)
-    @NotBlank(message = "Informe um nome valido!")
+    @NotBlank(message = "Informe uma nacionalidade!")
     @Length(max=100, message = "o nacionalidade não deve ultrapassar {max} caracteres")
     private String nacionalidade;
     

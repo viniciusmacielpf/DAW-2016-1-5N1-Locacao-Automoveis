@@ -7,6 +7,7 @@ import br.edu.ifsul.modelo.Estado;
 import br.edu.ifsul.modelo.PessoaFisica;
 import br.edu.ifsul.modelo.Telefone;
 import br.edu.ifsul.jpa.EntityManagerUtil;
+import br.edu.ifsul.modelo.PessoaJuridica;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.persistence.EntityManager;
@@ -34,11 +35,12 @@ public class TestePersistirTelefone {
         Boolean exeption = false;
         try {
             PessoaFisica pf = em.find(PessoaFisica.class, 5);
+//            PessoaJuridica pf = em.find(PessoaJuridica.class, 7);
             Telefone t = new Telefone();
-            t.setNumero("5491141641");
+            t.setNumero("91919191");
             t.setOperadora("Tim");
             pf.addTelefone(t);
-        
+         
             em.getTransaction().begin();
             em.persist(pf);
             em.getTransaction().commit();

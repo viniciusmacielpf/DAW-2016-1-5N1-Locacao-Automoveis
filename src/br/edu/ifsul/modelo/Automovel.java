@@ -52,14 +52,16 @@ public class Automovel implements Serializable {
     @Length(max = 50, message = "o estado não deve ultrapassar {max} caracteres")
     private String estadoAtual;
     
-     @Column(name = "quilometragem", columnDefinition = "integer", nullable = false)
+    @Column(name = "quilometragem", columnDefinition = "integer", nullable = false)
     @NotNull(message = "Informe a quilometragem")
+//    @NotBlank(message = "Informe uma quilometragem!")
     @Min(value = 0, message = "KM não pode ser menor que {max}")
     private Integer quilometragem;
 
 
     @Column(name = "ano", columnDefinition = "integer", nullable = false)
     @NotNull(message = "Informe o ano")
+//    @NotBlank(message = "Informe o ano do automovel!")
     @Min(value = 0, message = "Ano não pode ser menor que 0")
     private Integer ano;
 
@@ -86,7 +88,7 @@ public class Automovel implements Serializable {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Integer id) { 
         this.id = id;
     }
 
